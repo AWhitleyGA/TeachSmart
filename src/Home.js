@@ -11,7 +11,11 @@ class Home extends Component {
   render() {
     if(this.props.currentUser){
       return(
-        <CourseList courses={this.props.courses}/>
+        <CourseList
+          courses={this.props.courses}
+          onCourseSelect={this.props.onCourseSelect}
+          selectedCourse={this.props.selectedCourse}
+        />
       )
     } else {
       return(

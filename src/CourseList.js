@@ -6,13 +6,21 @@ class CourseList extends Component {
     super(props)
   }
   render() {
-      console.log(this.props.courses)
+      let selectedCourse = this.props.selectedCourse
       let courses = this.props.courses.map((course) => {
-        return(
-          <div className="course-icon">
-            {course.name} - {course.description}
-          </div>
-        )
+        if(course.name == selectedCourse) {
+          return(
+            <div className="selected-course-icon" onClick={() => this.props.onCourseSelect(course.name)}>
+              {course.name} - {course.description}
+            </div>
+          )
+        } else {
+          return(
+            <div className="course-icon" onClick={() => this.props.onCourseSelect(course.name)}>
+              {course.name} - {course.description}
+            </div>
+          )
+        }
       })
       return(
         <div className="course-gallery">

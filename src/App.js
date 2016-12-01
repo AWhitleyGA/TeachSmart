@@ -13,6 +13,7 @@ class App extends Component {
       selectedCourse: null
     }
     this.handleUserAuth = this.handleUserAuth.bind(this)
+    this.handleCourseSelect = this.handleCourseSelect.bind(this)
   }
 
   handleUserAuth(user) {
@@ -23,7 +24,6 @@ class App extends Component {
   }
 
   getUserCourses() {
-    console.log(JSON.parse(localStorage.getItem('teachSmartUser')).auth_token)
     axios.get('http://localhost:3000/courses', {
       headers: {
         "Authorization": "Bearer " + JSON.parse(localStorage.getItem('teachSmartUser')).auth_token,
@@ -34,23 +34,29 @@ class App extends Component {
       this.setState({
         courses: response.data
       })
-      console.log(this.state.courses)
     })
     .catch((error) => {
       console.log(error)
     })
   }
 
+  handleCourseSelect(course) {
+    this.setState({
+      selectedCourse: course
+    })
+  }
+
   render() {
-    console.log(this.state.currentUser)
     const children = React.Children.map(this.props.children, (child)=> {
       return React.cloneElement(child, {
         currentUser: this.state.currentUser,
         courses: this.state.courses,
-        onUserAuth: this.handleUserAuth
+        onUserAuth: this.handleUserAuth,
+        onCourseSelect: this.handleCourseSelect,
+        selectedCourse: this.state.selectedCourse
       })
     })
-    if(this.state.currentUser) {
+    if(this.state.selectedCourse) {
       return (
         <div className="container">
           <nav>

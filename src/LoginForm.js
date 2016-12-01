@@ -32,7 +32,6 @@ class LoginForm extends Component {
     .then((response) => {
       localStorage.setItem('teachSmartUser', JSON.stringify(response.data))
       this.props.onUserAuth(JSON.parse(localStorage.getItem('teachSmartUser')).user)
-      console.log(this.props.currentUser)
     })
     .catch((error) => {
       console.log(error)
