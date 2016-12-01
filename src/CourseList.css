@@ -1,0 +1,17 @@
+.course-gallery {
+  height: 100%;
+  width: 100%;
+}
+
+.course-icon {
+  width: 98%;
+  background: rgba(0, 0, 130, 1.0);
+  padding: 40px 20px;
+  margin: 10px 1%;
+  color: white;
+  border-radius: 10px;
+}
+
+.course-icon:hover {
+  background: rgba(0, 0, 130, 0.4);
+}
