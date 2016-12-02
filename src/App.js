@@ -7,13 +7,21 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props)
+    if(localStorage.getItem('teachSmartUser')) {
+      var user = JSON.parse(localStorage.getItem('teachSmartUser')).user
+    } else {
+      var user = null
+    }
     this.state = {
       courses: [],
-      currentUser: null,
+      currentUser: user,
       selectedCourse: null
     }
     this.handleUserAuth = this.handleUserAuth.bind(this)
     this.handleCourseSelect = this.handleCourseSelect.bind(this)
+    if(localStorage.getItem('teachSmartUser')) {
+      this.getUserCourses()
+    }
   }
 
   handleUserAuth(user) {
@@ -47,6 +55,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.currentUser)
     const children = React.Children.map(this.props.children, (child)=> {
       return React.cloneElement(child, {
         currentUser: this.state.currentUser,
