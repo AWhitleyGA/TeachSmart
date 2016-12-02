@@ -19,6 +19,8 @@
   justify-content: center;
   background: rgba(0, 0, 130, 1.0);
   color: white;
+  font-size: 0.8em;
+  text-decoration: none;
 }
 
 .assignment-icon:hover {

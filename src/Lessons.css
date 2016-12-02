@@ -37,3 +37,19 @@
     width: 98%;
   }
 }
+
+.resource-folder-link {
+  font-size: 1.4em;
+  color: blue;
+  padding: 30px 10px 10px 10px;
+  background: url(http://icons.veryicon.com/ico/Folder/Clarity%20Folder/Empty%20folder.ico);
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.4em;
+  margin: 20px;
+  width: 300px;
+  height: 250px;
+}

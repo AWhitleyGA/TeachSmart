@@ -16,11 +16,13 @@ class App extends Component {
       courses: [],
       currentUser: user,
       selectedCourse: null,
-      selectedLesson: null
+      selectedLesson: null,
+      selectedAssignment: null
     }
     this.handleUserAuth = this.handleUserAuth.bind(this)
     this.handleCourseSelect = this.handleCourseSelect.bind(this)
     this.handleLessonSelect = this.handleLessonSelect.bind(this)
+    this.handleAssignmentSelect = this.handleAssignmentSelect.bind(this)
 
     if(localStorage.getItem('teachSmartUser')) {
       this.getUserCourses()
@@ -61,7 +63,13 @@ class App extends Component {
     this.setState({
       selectedLesson: lesson
     })
-    console.log(lesson)
+  }
+
+  handleAssignmentSelect(evt, assignment) {
+    this.setState({
+      selectedAssignment: assignment
+    })
+    console.log(assignment)
   }
 
   render() {
@@ -74,7 +82,9 @@ class App extends Component {
         onCourseSelect: this.handleCourseSelect,
         selectedCourse: this.state.selectedCourse,
         onLessonSelect: this.handleLessonSelect,
-        selectedLesson: this.state.selectedLesson
+        selectedLesson: this.state.selectedLesson,
+        onAssignmentSelect: this.handleAssignmentSelect,
+        selectedAssignment: this.state.selectedAssignment
       })
     })
     if(this.state.selectedCourse) {

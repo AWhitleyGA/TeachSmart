@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import axios from 'axios'
 import './Assignments.css'
 
@@ -27,9 +28,9 @@ class Assignments extends Component {
   render() {
     let assignments = this.state.assignments.map((assignment) => {
       return(
-        <div className="assignment-icon">
+        <Link className="assignment-icon" to={`/assignments/${assignment.id}`} onClick={(evt) => this.props.onAssignmentSelect(evt, assignment)}>
           <h2>{assignment.name}</h2>
-        </div>
+        </Link>
       )
     })
     return(

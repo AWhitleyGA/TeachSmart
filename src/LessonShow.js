@@ -3,6 +3,10 @@ import moment from 'moment'
 import './LessonShow.css'
 
 class LessonShow extends Component {
+  openLinkInNewTab(evt, url) {
+    // evt.preventDefault()
+    window.open(url, '_blank')
+  }
   render() {
     return(
       <div className="lesson-page">
@@ -15,6 +19,9 @@ class LessonShow extends Component {
           <p className="lesson-info"><span>Directions: </span>{this.props.selectedLesson.body}</p>
         </div>
         <h4>Resources</h4>
+        <div className="lesson-resources">
+          <a className="resource-folder-link" onClick={(evt) => this.openLinkInNewTab(evt, this.props.selectedLesson.url)}>Lesson<br />Materials</a>
+        </div>
       </div>
     )
   }
