@@ -67,6 +67,7 @@ class App extends Component {
           </nav>
           <main>
             <div className="course-header">
+            <h2>{this.state.selectedCourse.name} - {this.state.selectedCourse.description}</h2>
             </div>
             {children}
           </main>

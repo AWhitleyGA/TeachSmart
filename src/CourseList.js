@@ -2,21 +2,18 @@ import React, { Component } from 'react'
 import './CourseList.css'
 
 class CourseList extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
       let selectedCourse = this.props.selectedCourse
       let courses = this.props.courses.map((course) => {
-        if(course.name == selectedCourse) {
+        if(course === selectedCourse) {
           return(
-            <div className="selected-course-icon" onClick={() => this.props.onCourseSelect(course.name)}>
+            <div className="selected-course-icon" onClick={() => this.props.onCourseSelect(course)}>
               {course.name} - {course.description}
             </div>
           )
         } else {
           return(
-            <div className="course-icon" onClick={() => this.props.onCourseSelect(course.name)}>
+            <div className="course-icon" onClick={() => this.props.onCourseSelect(course)}>
               {course.name} - {course.description}
             </div>
           )
@@ -24,7 +21,7 @@ class CourseList extends Component {
       })
       return(
         <div className="course-gallery">
-          <h1>Courses</h1>
+          <h3>Courses</h3>
           {courses}
         </div>
       )

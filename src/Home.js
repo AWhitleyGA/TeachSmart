@@ -4,10 +4,6 @@ import CourseList from './CourseList'
 import './Home.css'
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     if(this.props.currentUser){
       return(

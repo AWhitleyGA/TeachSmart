@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './Assignments.css'
 
 class Assignments extends Component {
   constructor(props) {
@@ -7,18 +8,23 @@ class Assignments extends Component {
     this.state = {
       assignments: []
     }
-    axios.get('http://localhost:3000/courses/1/assignments')
-      .then((response) => {
-        this.setState({
-          assignments: response.data.assignments
-        })
+    axios.get(`http://localhost:3000/courses/${this.props.selectedCourse.id}/assignments`, {
+      headers: {
+        "Authorization": "Bearer " + JSON.parse(localStorage.getItem('teachSmartUser')).auth_token,
+      },
+      user: this.props.currentUser
+    })
+    .then((response) => {
+      this.setState({
+        assignments: response.data
       })
-      .catch((error) => {
-        console.log(error)
-      })
+      console.log(response)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
   render() {
-    console.log(this)
     let assignments = this.state.assignments.map((assignment) => {
       return(
         <div className="assignment-icon">
@@ -28,6 +34,7 @@ class Assignments extends Component {
     })
     return(
       <div className="assignments-gallery">
+      <h3>Assignments</h3>
         {assignments}
       </div>
     )
