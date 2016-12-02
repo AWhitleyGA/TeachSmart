@@ -15,10 +15,13 @@ class App extends Component {
     this.state = {
       courses: [],
       currentUser: user,
-      selectedCourse: null
+      selectedCourse: null,
+      selectedLesson: null
     }
     this.handleUserAuth = this.handleUserAuth.bind(this)
     this.handleCourseSelect = this.handleCourseSelect.bind(this)
+    this.handleLessonSelect = this.handleLessonSelect.bind(this)
+
     if(localStorage.getItem('teachSmartUser')) {
       this.getUserCourses()
     }
@@ -54,6 +57,13 @@ class App extends Component {
     })
   }
 
+  handleLessonSelect(evt, lesson) {
+    this.setState({
+      selectedLesson: lesson
+    })
+    console.log(lesson)
+  }
+
   render() {
     console.log(this.state.currentUser)
     const children = React.Children.map(this.props.children, (child)=> {
@@ -62,7 +72,9 @@ class App extends Component {
         courses: this.state.courses,
         onUserAuth: this.handleUserAuth,
         onCourseSelect: this.handleCourseSelect,
-        selectedCourse: this.state.selectedCourse
+        selectedCourse: this.state.selectedCourse,
+        onLessonSelect: this.handleLessonSelect,
+        selectedLesson: this.state.selectedLesson
       })
     })
     if(this.state.selectedCourse) {

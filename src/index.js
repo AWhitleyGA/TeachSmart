@@ -5,6 +5,7 @@ import App from './App';
 import Home from './Home'
 import Lessons from './Lessons'
 import Assignments from './Assignments'
+import LessonShow from './LessonShow'
 import './index.css';
 
 ReactDOM.render((
@@ -12,6 +13,7 @@ ReactDOM.render((
     <Route path="/" component={ App }>
       <IndexRoute component={ Home }/>
       <Route path="/lessons" component={ Lessons }/>
+      <Route path="/lessons/:id" component={ LessonShow }/>
       <Route path="/assignments" component={ Assignments }/>
     </Route>
   </Router>

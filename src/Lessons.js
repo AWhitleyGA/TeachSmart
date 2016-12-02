@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 import axios from 'axios'
-import './Lessons.css'
 import moment from 'moment'
+import './Lessons.css'
 
 class Lessons extends Component {
   constructor(props) {
@@ -24,13 +25,14 @@ class Lessons extends Component {
       console.log(error)
     })
   }
+
   render() {
     let lessons = this.state.lessons.map((lesson) => {
       return(
-        <div className="lesson-icon">
-        <h4>{lesson.name}</h4>
-        <p>{moment.utc(lesson.start_time).format('MMMM Do, YYYY @ h:mm')}</p>
-        </div>
+        <Link className="lesson-icon" to={`/lessons/${lesson.id}`} onClick={(evt) => this.props.onLessonSelect(evt, lesson)}>
+          <h4>{lesson.name}</h4>
+          <p>{moment.utc(lesson.start_time).format('MMMM Do, YYYY @ h:mm')}</p>
+        </Link>
       )
     })
     return(

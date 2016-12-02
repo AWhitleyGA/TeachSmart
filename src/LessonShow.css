@@ -1,0 +1,23 @@
+.lesson-details {
+  margin: 10px 0;
+  padding-left: 30px;
+}
+
+.lesson-info {
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+.lesson-info span {
+  display: inline-block;
+  font-weight: bold;
+  width: 150px;
+}
+
+.lesson-page h4 {
+    font-size: 1.6em;
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    padding: 10px;
+    margin-top: 40px;
+}
